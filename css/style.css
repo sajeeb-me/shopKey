@@ -1,6 +1,6 @@
 .card-image {
     height: 300px;
 }
-/* .card {
-    height: 500px;
-} */
+.card:hover {
+    border-color: rgb(77, 149, 231);
+}

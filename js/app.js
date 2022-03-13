@@ -26,15 +26,15 @@ const showImg = images => {
         }
         const div = document.createElement("div");
         div.innerHTML = `
-        <div class="card col">
-            <div class="card h-100 border-primary">
+        <div class="col">
+            <div class="card h-100">
                 <div class="card-image d-flex justify-content-center p-4">
                     <img src="${image.image}" class="card-img-top h-100 w-75" alt="...">
                 </div>
                 <div class="card-body">
                     <h4 class="card-title">${title}</h4>
                     <div class="d-flex justify-content-between align-items-center mt-3">
-                        <a href="#" class="btn btn-primary">Show Details</a>
+                        <a onclick="getImageDetails(${image.id})" href="#" class="btn btn-primary">Show Details</a>
                         <p class="fs-3 m-0">$${image.price}</p>
                     </div>
                  </div>
@@ -58,17 +58,26 @@ const getSearchedImages = images => {
     photoContainer.textContent = '';
     // console.log(images);
     images.forEach(image => {
+        let title;
+        if (image.title.length > 22) {
+            title = image.title.slice(0, 22) + "...";
+        }
+        else {
+            title = image.title;
+        }
         const div = document.createElement("div");
         div.innerHTML = `
         <div class="col">
-            <div class="card h-100 border-primary">
+            <div class="card h-100">
                 <div class="card-image d-flex justify-content-center p-4">
                     <img src="${image.image}" class="card-img-top h-100 w-75" alt="...">
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit longer.</p>
+                    <h4 class="card-title">${title}</h4>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a onclick="getImageDetails(${image.id})" href="#" class="btn btn-primary">Show Details</a>
+                        <p class="fs-3 m-0">$${image.price}</p>
+                    </div>
                  </div>
             </div>
         </div>
@@ -76,3 +85,8 @@ const getSearchedImages = images => {
         photoContainer.appendChild(div)
     })
 };
+
+// get image details
+const getImageDetails = details => {
+    console.log(details);
+}
