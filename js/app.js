@@ -88,5 +88,50 @@ const getSearchedImages = images => {
 
 // get image details
 const getImageDetails = details => {
-    console.log(details);
+    const url = `https://fakestoreapi.com/products/${details}`;
+    fetch(url)
+        .then(res => res.json())
+        .then(data => showImageDetails(data))
+}
+const showImageDetails = data => {
+    console.log(data)
+    const modal = document.getElementById("modal");
+    const div = document.createElement('div');
+    div.innerHTML = `
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="d-flex justify-content-center">
+                                    <img class="w-75" src="./images/image-1.jpg" alt="">
+                                </div>
+                                <p class="text-center"><small>category</small></p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus iusto sapiente
+                                    possimus officiis totam voluptas distinctio quasi aperiam, quidem earum quod ipsum
+                                    qui! Odio, praesentium ab. Asperiores reprehenderit perferendis libero commodi
+                                    sequi. Vero laboriosam amet corrupti placeat possimus. Incidunt quod velit placeat
+                                    quis repellat voluptas similique fugiat temporibus quaerat, fugit quos non expedita
+                                    corrupti ratione sed nemo nulla consequuntur delectus? Earum excepturi voluptates
+                                    ratione dolorum nisi alias voluptatem nobis reprehenderit possimus commodi, magni
+                                    porro! Similique ab mollitia nostrum odio nulla.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5>Price: $50.0</h5>
+                                    <p class="m-0">Ratings: 3.5/5 (250)</p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Shop now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    `;
+    modal.appendChild(div)
 }
