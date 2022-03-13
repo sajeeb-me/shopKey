@@ -10,6 +10,13 @@ fetch(url)
 const showImg = images => {
     images.forEach(image => {
         // console.log(image)
+        let title;
+        if (image.title.length > 22) {
+            title = image.title.slice(0, 22) + "...";
+        }
+        else {
+            title = image.title;
+        }
         let description;
         if (image.description.length > 150) {
             description = image.description.slice(0, 150) + "...";
@@ -25,8 +32,11 @@ const showImg = images => {
                     <img src="${image.image}" class="card-img-top h-100 w-75" alt="...">
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">${image.title}</h5>
-                    <p class="card-text">${description}</p>
+                    <h4 class="card-title">${title}</h4>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="#" class="btn btn-primary">Show Details</a>
+                        <p class="fs-3 m-0">$${image.price}</p>
+                    </div>
                  </div>
             </div>
         </div>
