@@ -49,8 +49,8 @@
                         <div class="d-flex">
                             <input id="input-text" class="form-control me-2" type="search" placeholder="Search"
                                 aria-label="Search">
-                            <button onclick="getItemImages()" id="search-btn" class="btn btn-outline-light"
-                                type="submit">Search</button>
+                            <a href="#products"><button onclick="getItemImages()" id="search-btn"
+                                    class="btn btn-outline-light" type="submit">Search</button></a>
                         </div>
                     </div>
                 </div>
@@ -107,7 +107,7 @@
         </section>
         <!-- image container  -->
         <section class="container my-5">
-            <h2 class="text-center my-3">Our Products</h2>
+            <h2 id="products" class="text-center my-3">Our Products</h2>
             <div id="photo-container" class="row row-cols-1 row-cols-md-3 g-4">
             </div>
         </section>
